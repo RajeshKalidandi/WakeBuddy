@@ -1,0 +1,43 @@
+<MainScreen>:
+    name: 'main'
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'WakeBuddy'
+            left_action_items: [["menu", lambda x: app.navigation_draw()]]
+            right_action_items: [["clock", lambda x: app.set_alarm()]]
+        MDLabel:
+            text: "Welcome to WakeBuddy!"
+            halign: "center"
+        MDRaisedButton:
+            text: "Set Alarm"
+            on_release: app.show_time_picker()
+        MDRaisedButton:
+            text: "Select Alarm Tone"
+            on_release: app.show_file_manager()
+        MDLabel:
+            id: alarm_time
+            text: "No alarm set"
+            halign: "center"
+
+<AlarmScreen>:
+    name: 'alarm'
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'Alarm'
+            left_action_items: [["arrow-left", lambda x: app.back_to_main()]]
+        MDLabel:
+            text: "Alarm is ringing!"
+            halign: "center"
+        MDLabel:
+            id: quote_label
+            text: ""
+            halign: "center"
+        MDRaisedButton:
+            text: "Stop Alarm"
+            on_release: app.stop_alarm()
+        MDRaisedButton:
+            text: "Snooze"
+            on_release: app.snooze_alarm()
+
